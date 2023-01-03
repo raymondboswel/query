@@ -14,6 +14,8 @@ importers:
       '@rollup/plugin-commonjs': 22.0.1
       '@rollup/plugin-node-resolve': ^13.2.1
       '@rollup/plugin-replace': ^4.0.0
+      '@stencil/core': 2.20.0
+      '@stencil/store': ^2.0.1
       '@testing-library/jest-dom': ^5.16.4
       '@testing-library/react': ^13.0.0
       '@testing-library/react-17': npm:@testing-library/react@12.1.4
@@ -83,6 +85,8 @@ importers:
       '@rollup/plugin-commonjs': 22.0.1_rollup@2.78.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
       '@rollup/plugin-replace': 4.0.0_rollup@2.78.1
+      '@stencil/core': 2.20.0
+      '@stencil/store': 2.0.1_@stencil+core@2.20.0
       '@testing-library/jest-dom': 5.16.4
       '@testing-library/react': 13.3.0_biqbaboplfbrettd7655fr4n2y
       '@testing-library/react-17': /@testing-library/react/12.1.4_biqbaboplfbrettd7655fr4n2y
@@ -177,7 +181,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@tanstack/eslint-plugin-query': link:../../../packages/eslint-plugin-query
+      '@tanstack/eslint-plugin-query': 4.20.8
       '@vitejs/plugin-react': 2.1.0_vite@3.1.3
       vite: 3.1.3
 
@@ -228,7 +232,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@tanstack/eslint-plugin-query': link:../../../packages/eslint-plugin-query
+      '@tanstack/eslint-plugin-query': 4.20.8
       '@types/react': 17.0.50
       '@types/react-dom': 17.0.17
       '@vitejs/plugin-react': 2.1.0_vite@3.1.4
@@ -637,7 +641,7 @@ importers:
       '@tanstack/solid-query': link:../../../packages/solid-query
       solid-js: 1.5.4
     devDependencies:
-      '@tanstack/eslint-plugin-query': link:../../../packages/eslint-plugin-query
+      '@tanstack/eslint-plugin-query': 4.20.8
       typescript: 4.8.3
       vite: 3.1.3
       vite-plugin-solid: 2.3.9_solid-js@1.5.4+vite@3.1.3
@@ -821,6 +825,12 @@ importers:
       '@tanstack/query-core': link:../query-core
     devDependencies:
       solid-jest: 0.2.0
+
+  packages/stencil-query:
+    specifiers:
+      '@tanstack/query-core': workspace:*
+    dependencies:
+      '@tanstack/query-core': link:../query-core
 
   packages/vue-query:
     specifiers:
@@ -5562,11 +5572,29 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
+  /@stencil/core/2.20.0:
+    resolution: {integrity: sha512-ka+eOW+dNteXIfLCRipNbbAlBEQjqJ2fkx3fxzlKgnNHEQMdZiuIjlWt63KzvOJStNeuADdQXo89BB1dC2VRUw==}
+    engines: {node: '>=12.10.0', npm: '>=6.0.0'}
+    hasBin: true
+    dev: true
+
+  /@stencil/store/2.0.1_@stencil+core@2.20.0:
+    resolution: {integrity: sha512-zGVu8/zvMNouo068wppVihHBPejU1rbanfq5VHvgw7lCI2BzQVY+RFNlnWQ4PrGwSybLw50363y3MkClWF7k+A==}
+    peerDependencies:
+      '@stencil/core': '>=2.0.0'
+    dependencies:
+      '@stencil/core': 2.20.0
+    dev: true
+
   /@swc/helpers/0.4.2:
     resolution: {integrity: sha512-556Az0VX7WR6UdoTn4htt/l3zPQ7bsQWK+HqdG4swV7beUCxo/BqmvbOpUkTIm/9ih86LIf1qsUnywNL3obGHw==}
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@tanstack/eslint-plugin-query/4.20.8:
+    resolution: {integrity: sha512-JnAxUAC9DNmL9fwcfY3UjeFjjQwzV7cmPtf/Iac2o/p1Pmavul/L5bjo95zQNsBiBtJddHg+M17ximjpRybWJg==}
+    dev: true
 
   /@tanstack/match-sorter-utils/8.1.1:
     resolution: {integrity: sha512-IdmEekEYxQsoLOR0XQyw3jD1GujBpRRYaGJYQUw1eOT1eUugWxdc7jomh1VQ1EKHcdwDLpLaCz/8y4KraU4T9A==}
