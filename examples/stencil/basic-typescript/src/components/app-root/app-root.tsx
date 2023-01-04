@@ -1,6 +1,6 @@
 import { Component, h } from '@stencil/core';
-import { QueryClient,  QueryObserverResult, TData, TError} from '@tanstack/stencil-query';
-import { createQuery, QueryClientProvider } from '@tanstack/stencil-query';
+import { QueryClient, QueryObserverResult, TData, TError, createQuery, QueryClientProvider } from '@tanstack/stencil-query';
+
 type Post = {
   id: number
   title: string
@@ -23,10 +23,10 @@ export class AppRoot {
   });
   state: QueryObserverResult<TData, TError>;
 
- componentWillLoad() {
-  QueryClientProvider(this.queryClient);
-  this.state = this.usePosts()
- }
+  componentWillLoad() {
+    QueryClientProvider(this.queryClient);
+    this.state = this.usePosts()
+  }
 
   usePosts() {
     return createQuery({

@@ -26,21 +26,14 @@ export function parseQueryArgs<
   arg3?: TOptions,
 ): ParseQueryArgs<TOptions, TQueryKey> {
   if (!isQueryKey(arg1)) {
-    const { queryKey: solidKey, ...opts } = arg1 as any
-    if (solidKey) {
-      return {
-        ...opts,
-        queryKey: solidKey(),
-      }
-    }
     return arg1 as any
   }
 
   if (typeof arg2 === 'function') {
-    return { ...arg3, queryKey: arg1(), queryFn: arg2 } as any
+    return { ...arg3, queryKey: arg1, queryFn: arg2 } as any
   }
 
-  return { ...arg2, queryKey: arg1() } as any
+  return { ...arg2, queryKey: arg1 } as any
 }
 
 export function parseFilterArgs<
