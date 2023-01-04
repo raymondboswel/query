@@ -173,6 +173,19 @@ export default function rollup(options: RollupOptions): RollupOptions[] {
       bundleUMDGlobals: ['@tanstack/query-core'],
     }),
     ...buildConfigs({
+      name: 'stencil-query',
+      packageDir: 'packages/stencil-query',
+      jsName: 'StencilQuery',
+      outputFile: 'index',
+      entryFile: 'src/index.tsx',
+      globals: {
+        '@stencil/store': 'StencilStore',
+        '@stencil/core': 'Stencil',
+        '@tanstack/query-core': 'QueryCore',
+      },
+      bundleUMDGlobals: ['@tanstack/query-core'],
+    }),
+    ...buildConfigs({
       name: 'vue-query',
       packageDir: 'packages/vue-query',
       jsName: 'VueQuery',

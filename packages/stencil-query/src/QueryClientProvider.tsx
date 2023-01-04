@@ -1,5 +1,4 @@
 import { createStore, ObservableMap } from '@stencil/store';
-import { Component, Prop } from '@stencil/core';
 import type { QueryClient } from '@tanstack/query-core'
 import type { StoreOptions } from './types'
 
@@ -9,7 +8,7 @@ declare global {
   }
 }
 
-export const defaultStore = createStore<{client: QueryClient | undefined}>(undefined)
+export const defaultStore = createStore<{client: QueryClient | undefined}>({client: undefined})
 const queryClientSharingStore = createStore({shareQueryClient: false})
 
 // If we are given a context, we will use it.
@@ -64,26 +63,10 @@ export type QueryClientProviderProps =
   | QueryClientProviderPropsWithContext
   | QueryClientProviderPropsWithContextSharing
 
-  @Component({
-    tag: 'query-client-provider',
-  })
-  export class QueryClientProvider {
-    @Prop() client: QueryClient | undefined;
 
-    componentWillLoad() {
-      const clientStore = getQueryClientStore(undefined, true);
-      clientStore.state.client = this.client;
-    }
-
-    componentDidLoad() {
-      this.client?.mount();
-    }
-
-    disconnectedCallback() {
-      this.client?.unmount();
-    }
-
-    render() {
-      return <slot></slot>
-    }
+  export function QueryClientProvider(client: QueryClient) {
+    const clientStore = getQueryClientStore(undefined, true);
+    clientStore.state.client = client;
   }
+
+
